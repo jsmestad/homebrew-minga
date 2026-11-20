@@ -1,39 +1,25 @@
-# typed: false
 # frozen_string_literal: true
 
-# Minga TUI editor - installed from pre-built Burrito binaries
 class Minga < Formula
-  desc "BEAM-powered modal text editor with Zig terminal renderer"
+  desc "BEAM-powered modal text editor for the terminal"
   homepage "https://github.com/jsmestad/minga"
-  version "0.1.0"
+  version "0.1.0beta33"
   license "MIT"
 
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/jsmestad/minga/releases/download/v#{version}/minga_macos_aarch64"
-      sha256 "PLACEHOLDER"
-    else
-      url "https://github.com/jsmestad/minga/releases/download/v#{version}/minga_macos_x86_64"
-      sha256 "PLACEHOLDER"
-    end
-  end
+  depends_on macos: :sequoia
 
-  on_linux do
-    if Hardware::CPU.arm?
-      url "https://github.com/jsmestad/minga/releases/download/v#{version}/minga_linux_aarch64"
-      sha256 "PLACEHOLDER"
-    else
-      url "https://github.com/jsmestad/minga/releases/download/v#{version}/minga_linux_x86_64"
-      sha256 "PLACEHOLDER"
-    end
-  end
+  depends_on ArchRequirement => :arm64
+
+  url "https://github.com/jsmestad/minga/releases/download/v0.1.0-dev.33/minga_0.1.0-dev.33_macos_aarch64.tar.gz"
+  sha256 "f35cf8e3beaba6d917db700db8e5f99b3389b707cdfa5a86ed9270878fc6ea34"
 
   def install
-    binary = Dir["minga_*"].first
-    bin.install binary => "minga"
+    # Homebrew stages inside the archive's single minga/ directory.
+    libexec.install Dir.children(".")
+    bin.install_symlink libexec/"launchers/minga"
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/minga --version")
+    assert_equal "minga 0.1.0-dev.33", shell_output("#{bin}/minga --version").strip
   end
 end

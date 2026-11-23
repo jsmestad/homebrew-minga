@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 cask "minga-mac" do
-  version "0.1.0beta220"
-  sha256 "e2058927ede4ab9b107472213352b6983f02143893608372c6a331e85feb51ec"
+  version "0.1.0beta222"
+  sha256 "ea17c4dbde35c4d940053383cc4e29c23a65a0ba85adb36e6b345366d9b198a8"
 
-  url "https://github.com/jsmestad/minga/releases/download/v0.1.0-dev.220/Minga_0.1.0-dev.220.dmg"
+  url "https://github.com/jsmestad/minga/releases/download/v0.1.0-dev.222/Minga_0.1.0-dev.222.dmg"
   name "Minga"
   desc "BEAM-powered modal text editor with native macOS GUI"
   homepage "https://github.com/jsmestad/minga"

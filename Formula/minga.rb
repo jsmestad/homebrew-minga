@@ -3,15 +3,15 @@
 class Minga < Formula
   desc "BEAM-powered modal text editor for the terminal"
   homepage "https://github.com/jsmestad/minga"
-  version "0.1.0beta459"
+  version "0.1.0beta461"
   license "MIT"
 
   depends_on macos: :sequoia
 
   depends_on ArchRequirement => :arm64
 
-  url "https://github.com/jsmestad/minga/releases/download/v0.1.0-dev.459/minga_0.1.0-dev.459_macos_aarch64.tar.gz"
-  sha256 "7bcf90f1b36ae7710e67175b91b224b6ef1b70be86b09bf8800eeb61f533b3ac"
+  url "https://github.com/jsmestad/minga/releases/download/v0.1.0-dev.461/minga_0.1.0-dev.461_macos_aarch64.tar.gz"
+  sha256 "f3db2f1f0118c1942a41bf86dd1fd072191e4b5b5f172a8780b7f3a5a09d66da"
 
   def install
     # Homebrew stages inside the archive's single minga/ directory.
@@ -20,6 +20,6 @@ class Minga < Formula
   end
 
   test do
-    assert_equal "minga 0.1.0-dev.459", shell_output("#{bin}/minga --version").strip
+    assert_equal "minga 0.1.0-dev.461", shell_output("#{bin}/minga --version").strip
   end
 end
